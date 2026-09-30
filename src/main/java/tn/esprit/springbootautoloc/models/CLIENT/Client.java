@@ -1,0 +1,26 @@
+package tn.esprit.springbootautoloc.models.CLIENT;
+
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.time.LocalDate;
+
+@Table(name = "clientt")
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class Client {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idClient;
+
+    private String nom;
+    private String prenom;
+    private String email;
+    private String telephone;
+    private String numPermis;
+    private LocalDate dateInscription;
+}
