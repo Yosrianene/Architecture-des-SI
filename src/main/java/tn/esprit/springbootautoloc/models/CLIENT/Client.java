@@ -2,11 +2,13 @@ package tn.esprit.springbootautoloc.models.CLIENT;
 
 import jakarta.persistence.*;
 import lombok.*;
+import tn.esprit.springbootautoloc.models.RESERVATION.Reservation;
 
 import java.time.LocalDate;
+import java.util.List;
 
-@Table(name = "clientt")
 @Entity
+@Table(name = "clientt")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -23,4 +25,8 @@ public class Client {
     private String telephone;
     private String numPermis;
     private LocalDate dateInscription;
+
+    // Client 1 ---- * Reservation
+    @OneToMany(mappedBy = "client")
+    private List<Reservation> reservations;
 }

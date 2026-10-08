@@ -2,11 +2,12 @@ package tn.esprit.springbootautoloc.models.MAINTENANCE;
 
 import jakarta.persistence.*;
 import lombok.*;
+import tn.esprit.springbootautoloc.models.VEHICULE.Vehicule;
 
 import java.time.LocalDate;
 
-@Table(name = "maintenancce")
 @Entity
+@Table(name = "maintenancce")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -20,4 +21,9 @@ public class Maintenance {
     private LocalDate dateDebut;
     private LocalDate dateFin;
     private String description;
+
+    // Plusieurs maintenances concernent un véhicule
+    @ManyToOne
+    @JoinColumn(name = "id_vehicule")
+    private Vehicule vehicule;
 }

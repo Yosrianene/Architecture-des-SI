@@ -2,9 +2,12 @@ package tn.esprit.springbootautoloc.models.EQUIPEMENT;
 
 import jakarta.persistence.*;
 import lombok.*;
+import tn.esprit.springbootautoloc.models.VEHICULE.Vehicule;
 
-@Table(name = "equipementt")
+import java.util.List;
+
 @Entity
+@Table(name = "equipementt")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -16,4 +19,13 @@ public class Equipement {
     private Long idEquipement;
 
     private String libelle;
+
+    // Equipement * ---- * Vehicule
+    @ManyToMany
+    @JoinTable(
+            name = "vehicule_equipement",
+            joinColumns = @JoinColumn(name = "id_equipement"),
+            inverseJoinColumns = @JoinColumn(name = "id_vehicule")
+    )
+    private List<Vehicule> vehicules;
 }

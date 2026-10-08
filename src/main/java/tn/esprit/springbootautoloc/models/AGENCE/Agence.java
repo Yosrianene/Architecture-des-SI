@@ -2,9 +2,13 @@ package tn.esprit.springbootautoloc.models.AGENCE;
 
 import jakarta.persistence.*;
 import lombok.*;
+import tn.esprit.springbootautoloc.models.EMPLOYE.Employe;
+import tn.esprit.springbootautoloc.models.VEHICULE.Vehicule;
 
-@Table(name = "agence")
+import java.util.List;
+
 @Entity
+@Table(name = "agence")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -19,4 +23,12 @@ public class Agence {
     private String ville;
     private String adresse;
     private String telephone;
+
+    // Une agence possède plusieurs employés
+    @OneToMany(mappedBy = "agence")
+    private List<Employe> employes;
+
+    // Une agence possède plusieurs véhicules
+    @OneToMany(mappedBy = "agence")
+    private List<Vehicule> vehicules;
 }

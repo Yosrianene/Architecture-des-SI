@@ -2,12 +2,13 @@ package tn.esprit.springbootautoloc.models.PAIEMANT;
 
 import jakarta.persistence.*;
 import lombok.*;
+import tn.esprit.springbootautoloc.models.CONTRAT.Contrat;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-@Table(name = "paiiement")
 @Entity
+@Table(name = "paiiement")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -23,4 +24,9 @@ public class Paiement {
 
     @Enumerated(EnumType.STRING)
     private ModePaiement modePaiement;
+
+    // Plusieurs paiements appartiennent à un contrat
+    @ManyToOne
+    @JoinColumn(name = "id_contrat")
+    private Contrat contrat;
 }

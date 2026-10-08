@@ -2,9 +2,10 @@ package tn.esprit.springbootautoloc.models.EMPLOYE;
 
 import jakarta.persistence.*;
 import lombok.*;
+import tn.esprit.springbootautoloc.models.AGENCE.Agence;
 
-@Table(name = "employye")
 @Entity
+@Table(name = "employye")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -20,4 +21,9 @@ public class Employe {
 
     @Enumerated(EnumType.STRING)
     private RoleEmploye role;
+
+    // Plusieurs employés appartiennent à une agence
+    @ManyToOne
+    @JoinColumn(name = "id_agence")
+    private Agence agence;
 }
